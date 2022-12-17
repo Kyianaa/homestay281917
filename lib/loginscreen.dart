@@ -46,7 +46,7 @@ class _loginPageState extends State<loginPage> {
       height: screenHeight / 2,
       width: screenWidth,
       child: Image.asset(
-        'assets/images/kiana.jpg',
+        'assets/images/bg.jpeg',
         fit: BoxFit.cover,
       ),
     );

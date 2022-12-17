@@ -292,7 +292,7 @@ class _registrationState extends State<registration> {
   }
 
   String? validatePassword(String value) {
-    String pattern = r'^(?=.*[A-Z])(?=.*[a-z])(?=.[0-9]){6,}$';
+    String pattern = r'^(?=.*[A-Z])(?=.*[a-z])(?=.[0-9]){10,}$';
     RegExp regex = RegExp(pattern);
     if (value.isEmpty) {
       return 'Please enter password';
@@ -301,7 +301,8 @@ class _registrationState extends State<registration> {
     }
   }
 
-  void _registerUser(String name, String email, String phone, String passa) {
+  Future<void> _registerUser(
+      String name, String email, String phone, String passa) async {
     AlertDialog alert = AlertDialog(
       content: Row(children: [
         CircularProgressIndicator(
@@ -318,18 +319,22 @@ class _registrationState extends State<registration> {
         return alert;
       },
     );
-    http.post(
-        Uri.parse("http://10.31.72.145/homestay281917/php/register_user.php"),
-        body: {
-          "name": name,
-          "email": email,
-          "phone": phone,
-          "password": passa
-        }).then((response) {
-      print(response.body);
-    });
-    Navigator.pop(context);
-    _gohome();
+    var url =
+        Uri.parse('http://10.31.72.145/homestay281917/php/register_user.php');
+    var response = await http.get(url);
+    var rescode = response.statusCode;
+    if (rescode == 200) {
+      http.post(url, body: {
+        "name": name,
+        "email": email,
+        "phone": phone,
+        "password": passa
+      }).then((response) {
+        print(response.body);
+      });
+      Navigator.pop(context);
+      _gohome();
+    }
   }
 
   void _gohome() {

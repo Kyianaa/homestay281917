@@ -29,7 +29,7 @@ class _SplashPageState extends State<SplashPage> {
         Container(
             decoration: const BoxDecoration(
                 image: DecorationImage(
-                    image: AssetImage('assets/images/kiana.jpg'),
+                    image: AssetImage('assets/images/bg.jpeg'),
                     fit: BoxFit.cover))),
         Padding(
           padding: const EdgeInsets.fromLTRB(0, 50, 0, 20),

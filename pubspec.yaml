@@ -66,6 +66,7 @@ flutter:
   assets:
     - assets/images/capture.jpg
     - assets/images/kiana.jpg
+    - assets/images/bg.jpeg
     - assets/images/eula.txt
 
   # An image asset can refer to one or more resolution-specific "variants", see
